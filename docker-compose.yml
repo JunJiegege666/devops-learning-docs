@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  docs-nginx:
+    image: nginx:alpine
+    container_name: my-docs-site
+    restart: always
+    ports:
+      - "8081:80"  # 外部访问 8081
+    volumes:
+      # 注意：我们在服务器上会通过自动化脚本把 HTML 传到这个 html 目录
+      - ./html:/usr/share/nginx/html
