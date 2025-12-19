@@ -1,0 +1,39 @@
+name: Deploy Docs
+
+on:
+  push:
+    branches:
+      - main # 监听 main 分支的提交
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 下载代码
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. 安装 Node.js
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # 3. 编译文档 (生成 HTML)
+      - name: Build Docs
+        run: |
+          npm install
+          npm run docs:build
+          # 编译后的文件会在 .vitepress/dist 目录
+
+      # 4. 把文件传送到服务器
+      - name: Copy files to Server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 20000 # ⚠️ 确保这是你的 SSH 端口 (你之前查的是 20000)
+          source: ".vitepress/dist/*"
+          target: "/home/devops_user/devops-learning-docs/html" # 对应 docker-compose 里的挂载目录
+          strip_components: 2 # 去掉 .vitepress/dist 两层目录，直接拷内容
