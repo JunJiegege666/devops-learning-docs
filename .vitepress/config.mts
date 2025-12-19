@@ -19,7 +19,8 @@ export default defineConfig({
           { text: 'Linux 概览', link: '/linux' }, 
           { text: '第一阶段: Linux 基础', link: '/phase1' },
           { text: '第二阶段: Docker 容器', link: '/phase2' },
-          { text: '第三阶段: CI/CD 自动化', link: '/phase3' }
+          { text: '第三阶段: CI/CD 自动化', link: '/phase3' },
+          { text: '第四阶段: VitePress 文档站自动化部署', link: '/phase4' }
         ]
       }
     ],
