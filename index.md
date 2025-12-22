@@ -20,4 +20,6 @@ features:
     details: Dockerfile 编写、Docker Compose 服务编排、Portainer 可视化管理与微服务架构。
   - title: 第三阶段：CI/CD 自动化
     details: Git 版本控制、GitHub Actions 自动化流水线搭建、自动部署到远程服务器。
+  - title:第四阶段：VitePress 文档站自动化部署
+    details:从零搭建一个基于 VitePress 的技术文档网站，并实现 "本地写作 -> Git 推送 -> 自动构建 -> 服务器更新" 的全自动化流程。
 ---
