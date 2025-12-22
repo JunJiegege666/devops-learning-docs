@@ -35,5 +35,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22 # ⚠️ 确保这是你的 SSH 端口 (你之前查的是 20000)
           source: ".vitepress/dist/*"
-          target: "/home/devops_user/devops-learning-docs/html" # 对应 docker-compose 里的挂载目录
+          target: "/home/admin/devops-learning-docs/html" # 对应 docker-compose 里的挂载目录
           strip_components: 2 # 去掉 .vitepress/dist 两层目录，直接拷内容
